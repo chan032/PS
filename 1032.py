@@ -1,5 +1,8 @@
-total = int(input())
-numList = list(map(int, input().split()))
+k, n = map(int, input().split())
+numList = []
+for i in range(k):
+    numList(int(input()))
 
-answer = numList[0] * numList[-1]
-print(answer)
+
+while start > end:
+    
