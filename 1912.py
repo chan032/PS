@@ -1,6 +1,9 @@
 import sys
 input = sys.stdin.readline
 
+import sys
+input = sys.stdin.readline
+
 total = int(input())  # [1, 10 0000]
 numList = list(map(int, input().split()))
 
