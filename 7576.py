@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 from collections import deque
 
 m, n = map(int, input().split())
@@ -22,7 +24,7 @@ def bfs(x, y):
             if n > nx >= 0 and m > ny >= 0:
                 if graph[nx][ny] == -1:
                     continue
-                if graph[nx][ny] == 0 or graph[nx][ny] > graph[x][y] + 1:
+                if graph[nx][ny] == 0 or graph[x][y] + 1 < graph[nx][ny]:
                     graph[nx][ny] = graph[x][y] + 1
                     queue.append([nx, ny])
 
