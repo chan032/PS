@@ -1,30 +1,43 @@
-from collections import deque
+from itertools import permutations
 
-total = int(input())
-numQue = deque(map(int, input().split()))
+n = int(input())
+nums = list(map(int, input().split()))
+counts = list(map(int, input().split()))
+opers = []
+for i in range(4):
+    if counts[i] == 0:
+        continue
+    else:
+        for _ in range(counts[i]):
+            opers.append(i)
+# print(opers)
+# print(opers)
 
-operList = list(map(int, input().split()))  
+MAX = -int(1e10)
+MIN = int(1e10)
+cases = set(permutations(opers, n - 1))
+for case in cases:
+    i = 0
+    tmp = nums[i]
+    for c in case:
+        i += 1
+        if c == 0:
+            tmp += nums[i]
+        elif c == 1:
+            tmp -= nums[i]
+        elif c == 2:
+            tmp *= nums[i]
+        else:  # c == 3:
+            if tmp < 0 and nums[i] > 0:
+                tmp *= -1
+                tmp //= nums[i]
+                tmp *= -1
+            else:
+                tmp //= nums[i]
+    # print(case)
+    # print(tmp)
+    MAX = max(tmp, MAX)
+    MIN = min(tmp, MIN)
 
-
-
-answerMax = int(-1e10)
-answerMin = int(1e10)
-def dfs(que):
-    x0 = que.popleft()
-
-    for 
-    for i in range(4):
-        if operList[i] <= 0:
-            continue
-
-        if i == 0:
-            pass
-        elif i == 1:
-            pass
-        elif i == 2:
-            pass
-        else:
-            pass
-
-dfs(numQue)
-print(answerMax, answerMin)
+print(MAX)
+print(MIN)
